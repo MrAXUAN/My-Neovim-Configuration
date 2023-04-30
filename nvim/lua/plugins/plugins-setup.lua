@@ -65,6 +65,8 @@ return require('packer').startup(function(use)
 
     use {"akinsho/toggleterm.nvim", tag = "*"}
 
+    use 'onsails/lspkind.nvim'
+
 
     if packer_bootstrap then
         require('packer').sync()

@@ -8,6 +8,11 @@ if not snip_status_ok then
     return
 end
 
+local lspkind_status, lspkind = pcall(require, "lspkind")
+if not lspkind_status then
+    return
+end
+
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- 下面会用到这个函数
@@ -18,6 +23,14 @@ end
 
 
 cmp.setup({
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol',
+            maxwidth = 50,
+            ellipsis_char = '...'
+        })
+    },
+
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
@@ -64,8 +77,9 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'buffer'},
         { name = 'path' },
     }, {
             { name = 'buffer' },
-        })
+        }),
 })
