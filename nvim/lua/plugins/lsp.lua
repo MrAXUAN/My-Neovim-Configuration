@@ -12,24 +12,44 @@ require("mason").setup({
 require("mason-lspconfig").setup ({
     ensure_installed = {
         "lua_ls",
+        "clangd",
+        "rust_analyzer",
+        "cmake",
+        "pyright",
+        "dockerls",
+        "html",
     },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("lspconfig").clangd.setup {
+local lspconfig = require("lspconfig")
+
+lspconfig.pyright.setup {
     capabilities = capabilities,
 }
 
-require("lspconfig").cmake.setup {
+lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
 }
 
-require("lspconfig").rust_analyzer.setup {
+lspconfig.dockerls.setup {
     capabilities = capabilities,
 }
 
-require("lspconfig").lua_ls.setup {
+lspconfig.html.setup {
+    capabilities = capabilities,
+}
+
+lspconfig.cmake.setup {
+    capabilities = capabilities,
+}
+
+lspconfig.clangd.setup {
+    capabilities = capabilities,
+}
+
+lspconfig.lua_ls.setup {
     capabilities = capabilities,
 
     settings = {
