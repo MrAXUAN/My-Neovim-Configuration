@@ -16,6 +16,16 @@ return require('packer').startup(function(use)
 
     -- Colorscheme
     use 'folke/tokyonight.nvim'
+    use 'EdenEast/nightfox.nvim'
+
+    use {'glepnir/dashboard-nvim'}
+
+    -- DAP
+    --use {'mfussenegger/nvim-dap'}
+    --use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    --use 'theHamsta/nvim-dap-virtual-text'
+
+    use 'nvim-tree/nvim-web-devicons'
 
     -- LuaLine
     use {
@@ -50,6 +60,8 @@ return require('packer').startup(function(use)
     use("saadparwaiz1/cmp_luasnip")
     use("rafamadriz/friendly-snippets")
     use("hrsh7th/cmp-path")
+    use{"glepnir/lspsaga.nvim"}
+    use {'simrat39/symbols-outline.nvim'}
 
     use 'numToStr/Comment.nvim'
     use 'windwp/nvim-autopairs'

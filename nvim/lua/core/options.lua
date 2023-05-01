@@ -1,6 +1,3 @@
--- Colorscheme
-vim.cmd[[colorscheme tokyonight-night]]
-
 local opt = vim.opt
 
 opt.number = true
