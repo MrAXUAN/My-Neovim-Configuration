@@ -3,4 +3,4 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup()
 
-require'nvim-web-devicons'.get_icons()
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")

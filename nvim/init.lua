@@ -1,25 +1,28 @@
-require("core.options")
-require("core.keymaps")
+-- Core
+require('core.options')
+require('core.keymaps')
 
-require("plugins.plugins-setup")
-require("plugins.ui")
-require("plugins.dashboard")
-require("plugins.comment")
-require("plugins.gitsigns")
-require("plugins.lualine")
+-- Plugins
+require('plugins.setup')
 
---require("plugins.dap.dap")
---require("plugins.dap.dapui")
---require("plugins.dap.cpp")
---require("plugins.dap.python")
+-- Plugins Config
+require('plugins.config.ui')
+require('plugins.config.treesitter')
+require('plugins.config.nvim-tree')
+require('plugins.config.lualine')
+require('plugins.config.comment')
+require('plugins.config.autopairs')
+require('plugins.config.bufferline')
+require('plugins.config.cmp')
+require('plugins.config.telescrope')
+require('plugins.config.toggleterm')
+require('plugins.config.gitsigns')
 
-require("plugins.nvim-tree")
-require("plugins.treesitter")
-require("plugins.telescope")
-require("plugins.autopairs")
-require("plugins.bufferline")
+-- LSP
+require('plugins.lsp.lsp')
+require('plugins.lsp.config')
 
-require("plugins.cmp")
-require("plugins.lsp")
-require("plugins.lspsaga")
-
+-- DAP
+require('plugins.dap.dap')
+require('plugins.dap.ui')
+require('plugins.dap.cpp')
