@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
 
     -- Colorscheme
     use 'EdenEast/nightfox.nvim'
+    use 'sainnhe/everforest'
+    use 'sainnhe/gruvbox-material'
 
     -- Icons
     use 'nvim-tree/nvim-web-devicons'
