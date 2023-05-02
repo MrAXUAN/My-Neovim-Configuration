@@ -1,14 +1,14 @@
 local opt = require('toggleterm').setup({
-    size = 70,
+    size = 40,
 
     open_mapping = [[<C-\>]],
 
     start_in_insert = true,
 
-    direction = 'vertical' -- hoeizontal, vertical, float, tab
+    direction = 'float' -- hoeizontal, vertical, float, tab
 })
 
-vim.keymap.set("n", "<leader>t", "<Esc>:ToggleTerm<CR>")
+vim.keymap.set("n", "<leader>tt", "<Esc>:ToggleTerm<CR>")
 
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("t", "jk", "<C-\\><C-n>", {noremap = true, silent = true})

@@ -28,6 +28,9 @@ return require('packer').startup(function(use)
     -- Vim Tmux Navigator
     use "christoomey/vim-tmux-navigator"
 
+    -- Lua
+    use { "folke/trouble.nvim", requires = "nvim-tree/nvim-web-devicons" }
+
     -- NvimTree
     use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' } }
 
