@@ -1,6 +1,7 @@
 return {
     "sainnhe/everforest",
+
     config = function ()
-        vim.cmd[[colorscheme everforest]]
-    end,
+        vim.cmd([[colorscheme everforest]])
+    end
 }
