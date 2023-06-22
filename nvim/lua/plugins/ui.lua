@@ -1,4 +1,15 @@
 return {
+    -- Theme
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        priority = 1000,
+
+        config = function ()
+            vim.cmd([[ colorscheme carbonfox ]])
+        end
+    },
+
     -- Lua Line
     {
         "nvim-lualine/lualine.nvim",
@@ -13,6 +24,8 @@ return {
     {
         "akinsho/bufferline.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        event = "VeryLazy",
+
         config = function ()
             require("bufferline").setup{
                 options = {
@@ -45,6 +58,7 @@ return {
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         dependencies = { 'nvim-lua/plenary.nvim' },
+        event = "VeryLazy",
 
         config = function ()
             local builtin = require('telescope.builtin')

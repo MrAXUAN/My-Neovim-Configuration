@@ -1,16 +1,42 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local servers = {
+    "lua_ls",
+    "rust_analyzer",
+    "clangd",
+    "cmake",
+    "tsserver",
+    "html",
+    "yamlls"
+}
+
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+    return
+end
+
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+    return
+end
+
+local lspkind = require("lspkind")
 
 local lspconfig = require("lspconfig")
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local servers = {
-    "lua_ls",
-    "clangd",
-    "rust_analyzer",
-    "cmake"
-}
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+
+require("mason-lspconfig").setup({
+    ensure_installed = servers
+})
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -18,15 +44,11 @@ for _, lsp in ipairs(servers) do
     }
 end
 
--- Some Config
 lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
-                globals = {
-                    "vim",
-                    "require"
-                }
+                globals = { "vim", "require" }
             }
         }
     }
@@ -40,6 +62,17 @@ cmp.setup {
         expand = function(args)
             require("luasnip").lsp_expand(args.body)
         end,
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            with_text = true, -- do not show text alongside icons
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            before = function (entry, vim_item)
+                -- Source 显示提示来源
+                vim_item.menu = "["..string.upper(entry.source.name).."]"
+                return vim_item
+            end
+        })
     },
     mapping = cmp.mapping.preset.insert({
         -- ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -80,3 +113,17 @@ cmp.setup {
     })
 }
 
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+            { name = 'cmdline' }
+        })
+})
