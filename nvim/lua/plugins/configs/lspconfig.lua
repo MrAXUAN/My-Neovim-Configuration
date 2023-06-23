@@ -4,7 +4,7 @@ local servers = {
     "clangd",
     "cmake",
     "tsserver",
-    "html",
+    "pylsp",
     "yamlls"
 }
 
