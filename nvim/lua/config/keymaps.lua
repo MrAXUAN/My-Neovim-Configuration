@@ -1,19 +1,19 @@
+-- config/keymaps.lua --- Configuration of keymaps for NVIM
+
 vim.g.mapleader = " "
 
-local keymap = vim.keymap
+local map = vim.keymap.set
 
--- ---------- 插入模式 ---------- ---
-keymap.set("i", "jk", "<ESC>")
+map("i", "jk", "<ESC>")
 
--- ---------- 视觉模式 ---------- ---
--- 单行或多行移动
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
--- ---------- 正常模式 ---------- ---
--- 窗口
-keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
-keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
+map("n", "<leader>sv", "<C-w>v")
+map("n", "<leader>sh", "<C-w>s")
 
--- 取消高亮
-keymap.set("n", "<leader>nh", ":nohl<CR>")
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
